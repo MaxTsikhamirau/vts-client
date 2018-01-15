@@ -1,0 +1,12 @@
+.EmployeeTable div.rt-td {
+    padding: 0px!important;
+}
+
+.EmployeeTable div.rt-resizable-header-content {
+    padding: 5px;
+}
+
+.EmployeeTable a {
+    text-decoration: none;
+    color: inherit;
+}

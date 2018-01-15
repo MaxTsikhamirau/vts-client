@@ -1,0 +1,36 @@
+.ViewEmployee {
+    display: flex;
+}
+
+.ViewEmployee-generalInfo {
+    flex: 3 0 0;
+    margin-bottom: 15px;
+}
+.ViewEmployee-placeholder {
+    flex: 1 0 0;
+}
+.ViewEmployee-vacationInfo {
+    flex: 4 0 0;
+}
+
+.ViewEmployee-generalInfo div.form-group {
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+}
+
+.ViewEmployee-vacationInfo div.form-group {
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+.ViewEmployee-vacationInfo div.gigantic {
+    font-size: 55px;
+    padding: 15px;
+    font-weight: bold;
+    color: #2118c7;
+}
+
+.ViewEmployee-buttons > button {
+    margin-left: 5px;
+}
