@@ -1,0 +1,44 @@
+{
+  "common": {
+    "btn": {
+      "add": "Добавить",
+      "remove": "Удалить",
+      "edit": "Изменить",
+      "back": "Назад",
+      "add-employee": "Добавить Сотрудника",
+      "clear": "Очистить",
+      "update": "Применить",
+      "cancel": "Отмена"
+    }
+  },
+  "login": {
+    "email": "Email",
+    "password": "Пароль",
+    "login": "Войти",
+    "logout": "Выйти"
+  },
+  "employee-table": {
+    "header": {
+      "name": "Имя Сотрудника",
+      "email": "Email",
+      "groups": "Группы"
+    }
+  },
+  "manage-employee": {
+    "first-name": "Имя",
+    "last-name": "Фамилия",
+    "email": "Email",
+    "groups": "Группы"
+  },
+  "search": {
+    "placeholder": "искать..."
+  },
+  "navigation": {
+    "label": {
+      "login": "Логин",
+      "employee-table": "Список Сотрудников",
+      "manage-employee": "Данные Сотрудника",
+      "view-employee": "Данные Сотрудника"
+    }
+  }
+}

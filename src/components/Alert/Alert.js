@@ -2,12 +2,12 @@ import React from 'react';
 import { Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import { clearAlertAction } from '../../reducers/alertActions';
+import { clearAlertAction } from '../../reducers/alert/alertActions';
 
 const alert = (props) => {
     const alert = props.alert;
     return (
-        alert.message 
+        alert.message
         ?   <Alert bsStyle={alert.type} style={{ marginBottom: '5px' }} onClick={() => props.dispatch(clearAlertAction())}>
                 {alert.message}
             </Alert>

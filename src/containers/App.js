@@ -1,44 +1,46 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { Panel } from 'react-bootstrap';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { Panel, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 
 import Header from '../components/Header/Header';
 import ManageEmployee from '../components/ManageEmployee/ManageEmployee';
 import ViewEmployee from '../components/ViewEmployee/ViewEmployee';
 import EmployeeTable from '../components/EmployeeTable/EmployeeTable';
 import Login from '../components/Login/Login';
+import { logout } from '../functions/loginFunctions';
 
-import { fetchEmployees } from '../functions/employeeFunctions';
-import { fetchEmployeesAction } from '../reducers/employeeActions';
-
-@connect(
-  null,
-  dispatch => ({
-    fetchEmployees: () => dispatch(fetchEmployees())
-  })
-)
+@translate('translations')
+@connect(store => ({
+  nav_label: store.navigation.get('nav_label')
+}))
 class App extends Component {
-
-  componentDidMount = () => {
-    this.props.fetchEmployees();
-  }
-
   render() {
     return (
       <div className="App">
         <Panel>
           <Header />
         </Panel>
-        <Panel header="Employees" bsStyle="primary" >
-          <Switch>
-            <Route exact path="/" component={EmployeeTable} />
-            <Route exact path="/manage" component={ManageEmployee} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/manage/:id" component={ManageEmployee} />
-            <Route exact path="/view/:id" component={ViewEmployee} />
-          </Switch>
+        <Panel header={this.props.nav_label} bsStyle="primary" >
+          {
+            window.localStorage.token ?
+            <Switch>
+              <Route exact path="/" component={EmployeeTable} />
+              <Route exact path="/manage" component={ManageEmployee} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/manage/:id" component={ManageEmployee} />
+              <Route exact path="/view/:id" component={ViewEmployee} />
+            </Switch> :
+            <Switch>
+              <Route exact path="/login" component={Login} />
+              <Redirect to="/login" />
+            </Switch>
+          }
         </Panel>
+        <Button style={{ marginRight: '5px' }} onClick={logout}>logout</Button>
+        <Button style={{ marginRight: '5px' }} onClick={() => this.props.i18n.changeLanguage('ru')}>ru</Button>
+        <Button style={{ marginRight: '5px' }} onClick={() => this.props.i18n.changeLanguage('en')}>en</Button>
       </div>
     );
   }
