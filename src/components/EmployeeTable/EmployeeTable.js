@@ -1,24 +1,30 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import '../../../node_modules/font-awesome/css/font-awesome.css';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 
 import ActionBar from '../../containers/ActionBar/ActionBar';
 import SearchControl from '../SearchControl/SearchControl';
 import './EmployeeTable.css';
 
-import { setErrorAction } from '../../reducers/alertActions';
+import { fetchEmployeesAction } from '../../reducers/employee/employeeActions';
+import { setErrorAction } from '../../reducers/alert/alertActions';
+import { setNavLabelAction } from '../../reducers/navigation/navigationActions';
 
+@translate('translations')
 @connect(
     store => ({
         employees: store.employees.get('employees').toJS(),
         loading: store.employees.get('loading')
     }),
     dispatch => ({
-        setErrorAction: (message) => dispatch(setErrorAction(message))
+      fetchEmployees: () => dispatch(fetchEmployeesAction()),
+      setErrorAction: (message) => dispatch(setErrorAction(message)),
+      setNavLabel: (text) => dispatch(setNavLabelAction(text))
     })
 )
 class EmployeeTable extends React.Component {
@@ -27,22 +33,28 @@ class EmployeeTable extends React.Component {
         searchText: ''
     }
 
+    componentDidMount = () => {
+      this.props.setNavLabel(this.props.t('navigation.label.employee-table'));
+      this.props.fetchEmployees();
+    }
+
     changeSearchHandler = (event) => this.setState({ searchText: event.target.value });
     cancelSearchHandler = () => this.setState({ searchText: '' });
 
     ActionBar = () => {
-        return <ActionBar
-            left={
-                <SearchControl
-                    text={this.state.searchText}
-                    changed={this.changeSearchHandler}
-                    canceled={this.cancelSearchHandler} />
-            }
-            right={
-                <Link to="/manage">
-                    <Button bsStyle="primary">Add Employee</Button>
-                </Link>
-            } />;
+      const { t } = this.props;
+      return <ActionBar
+          left={
+              <SearchControl
+                  text={this.state.searchText}
+                  changed={this.changeSearchHandler}
+                  canceled={this.cancelSearchHandler} />
+          }
+          right={
+              <Link to="/manage">
+                  <Button bsStyle="primary">{t('common.btn.add-employee')}</Button>
+              </Link>
+          } />;
     }
 
     simpleRow = (header, accessor, transform = (val) => val) => (
@@ -60,23 +72,20 @@ class EmployeeTable extends React.Component {
     )
 
     ReactTable = (props) => {
-        return <ReactTable
-            data={props.employees}
-            columns={[
-                this.simpleRow('Employee Name', 'fullName'),
-                this.simpleRow('Email', 'email'),
-                this.simpleRow('Manager', 'manager'),
-                this.simpleRow('Groups', 'groupsFormatted'),
-            ]}
-            defaultPageSize={10}
-            className="-striped -highlight"
-        />;
+      const { t } = this.props;
+      return <ReactTable
+          data={props.employees}
+          columns={[
+              this.simpleRow(t('employee-table.header.name'), 'fullName'),
+              this.simpleRow(t('employee-table.header.email'), 'email'),
+              this.simpleRow(t('employee-table.header.groups'), 'groupsFormatted'),
+          ]}
+          defaultPageSize={10}
+          className="-striped -highlight"
+      />;
     }
 
     render() {
-        if (!sessionStorage.token) {
-          return <Redirect to="/login" />;
-        }
         const filteredEmployees = this.props.employees
             .filter(employee =>
                 employee.fullName.toLowerCase().includes(this.state.searchText.toLowerCase()));
@@ -84,12 +93,9 @@ class EmployeeTable extends React.Component {
             <div className="EmployeeTable">
                 <this.ActionBar />
                 {
-                  // <Button onClick={() => this.props.setErrorAction('Dummy Error!')} bsStyle="danger">
-                  // Alert Button
-                  // </Button>
-                }
-                {
-                  this.props.loading ? <div style={{margin:'auto',padding: '50px',fontSize:'35px'}}>Loading...</div> : <this.ReactTable employees={filteredEmployees} />
+                  this.props.loading
+                    ? <div style={{margin:'auto',padding: '50px',fontSize:'35px'}}>Loading...</div>
+                    : <this.ReactTable employees={filteredEmployees} />
                 }
             </div>);
     }

@@ -1,13 +1,17 @@
-import { post, remove } from './server';
+import users from '../server/users';
 
 export const login = (email, password) => {
-  post('users/login', null, {email, password}, response => {
-    sessionStorage.setItem('token', response.token);
+  users.post('/login', { email, password })
+  .then(response => {
+    window.localStorage.setItem('token', response.headers['x-auth']);
+    window.location.reload();
   });
 }
 
 export const logout = () => {
-  remove('users/me/token', null, response => {
-    sessionStorage.removeItem('token');
+  users.delete('/me/token')
+  .then(() => {
+    window.localStorage.removeItem('token');
+    window.location.reload();
   });
 }

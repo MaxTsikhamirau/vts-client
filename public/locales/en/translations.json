@@ -1,0 +1,44 @@
+{
+  "common": {
+    "btn": {
+      "add": "Add",
+      "remove": "Remove",
+      "edit": "Edit",
+      "back": "Back",
+      "add-employee": "Add Employee",
+      "clear": "Clear",
+      "update": "Update",
+      "cancel": "Cancel"
+    }
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "employee-table": {
+    "header": {
+      "name": "Employee Name",
+      "email": "Email",
+      "groups": "Groups"
+    }
+  },
+  "manage-employee": {
+    "first-name": "First Name",
+    "last-name": "Last Name",
+    "email": "Email",
+    "groups": "Groups"
+  },
+  "search": {
+    "placeholder": "search..."
+  },
+  "navigation": {
+    "label": {
+      "login": "Login",
+      "employee-table": "Employees",
+      "manage-employee": "Manage Employee",
+      "view-employee": "View Employee"
+    }
+  }
+}

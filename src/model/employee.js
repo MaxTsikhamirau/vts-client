@@ -1,10 +1,8 @@
-import { ObjectID } from 'bson';
-
 require('datejs');
 
 class Employee {
     constructor(params = {}) {
-        this._id = params._id || new ObjectID().toString();
+        this._id = params._id;
         this._firstName = params.firstName || '';
         this._lastName = params.lastName || '';
         this._email = params.email || '';

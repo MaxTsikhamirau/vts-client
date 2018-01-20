@@ -24,4 +24,4 @@ Also you can use .env if some configuration is the same for all environments. If
 
 ### Start
 
-Execute ```npm start```
+Execute ```npm start``` (prod) or ```npm run start-dev``` (dev)
