@@ -5,6 +5,7 @@ Vacation tracking system helps managing employees vacation requests
 ## Installation
 
 * Execute ```npm install``` in the root folder
+* Possibly you will have to install **serve** manually ```npm install -g serve```
 
 ## Prerequisites
 
