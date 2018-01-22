@@ -13,5 +13,9 @@ export const logout = () => {
   .then(() => {
     window.localStorage.removeItem('token');
     window.location.reload();
+  })
+  .catch(() => {
+    console.error('Unable to remove login from server');
+    window.localStorage.removeItem('token');
   });
 }
