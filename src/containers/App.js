@@ -18,7 +18,7 @@ import { logout } from '../functions/loginFunctions';
 }))
 class App extends Component {
   render() {
-    const roles = jwtDecode(localStorage.token).roles;
+    const roles = localStorage.token ? jwtDecode(localStorage.token).roles : [];
     const stories = {
       ADMIN: ['can crud on users', 'can assign user roles'],
       OFFICE: ['can crud on employees', 'can view vacations', 'can grab reports'],
