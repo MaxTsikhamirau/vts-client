@@ -1,0 +1,13 @@
+.MainLayot {}
+
+  @media (min-width: 699px) {
+      .MainLayot-main {
+          margin-top: 60px;
+      }
+  }
+
+@media (max-width: 700px) {
+    .MainLayot-main {
+        margin-left: 60px;
+    }
+}
