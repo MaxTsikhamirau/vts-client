@@ -1,0 +1,19 @@
+.SidebarItem {
+  text-decoration: none!important;
+  width: 100%;
+  padding: 10px 15px 10px 15px;
+  font-size: 18px;
+  background-color: #141EC5;
+  color: white!important;
+  border: 1px solid #141EC5;
+  margin-bottom: 5px;
+}
+
+.SidebarItem:hover {
+  background-color: #343EE5;
+}
+
+.SidebarItem > span {
+  font-family: inherit;
+  padding-left: 10px;
+}

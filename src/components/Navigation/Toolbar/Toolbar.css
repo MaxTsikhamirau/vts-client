@@ -14,14 +14,11 @@
     z-index: 90;
 }
 
-.Toolbar span {
+.Toolbar a {
   font-size: 20px;
+  text-decoration: none;
+  color: white;
 }
-
-/* .Toolbar i {
-  font-size: 25px;
-  cursor: pointer;
-} */
 
 .Toolbar nav {
     height: 100%;
