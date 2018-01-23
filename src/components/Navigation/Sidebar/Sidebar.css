@@ -1,0 +1,23 @@
+.Sidebar a.ui-sidebar-close {
+  display: none;
+}
+
+.Sidebar > div {
+  position: absolute;
+  bottom: 20px;
+}
+
+.Sidebar > div > a {
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background-color: #141EC5;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 7px;
+}
+
+.Sidebar > div > a:hover {
+  background-color: #343EE5;
+}

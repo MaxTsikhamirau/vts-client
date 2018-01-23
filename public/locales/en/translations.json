@@ -39,6 +39,13 @@
       "employee-table": "Employees",
       "manage-employee": "Manage Employee",
       "view-employee": "View Employee"
+    },
+    "sidebar": {
+      "profile": "Profile",
+      "users": "Users",
+      "employees": "Employees",
+      "vacations": "Vacations",
+      "logout": "Logout"
     }
   }
 }

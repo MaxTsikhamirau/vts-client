@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import logo from '../../../assets/logo.svg';
 
@@ -10,7 +11,7 @@ const toolbar = ( props ) => (
 
   <header className="Toolbar">
     <MenuToggle />
-    <span>Vacation Tracking System</span>
+    <Link to="/" >Vacation Tracking System</Link>
     <div className="Toolbar-Logo">
         <img src={logo} className="Toolbar-logo" alt="logo" />
     </div>
